@@ -1,0 +1,227 @@
+@ mpiP
+@ Command : ./pnbody 30000 500 
+@ Version                  : 3.5.0
+@ MPIP Build date          : Apr 26 2026, 12:10:02
+@ Start time               : 2026 04 26 12:25:39
+@ Stop time                : 2026 04 26 12:26:16
+@ Timer Used               : PMPI_Wtime
+@ MPIP env var             : [null]
+@ Collector Rank           : 0
+@ Collector PID            : 12586
+@ Final Output Dir         : .
+@ Report generation        : Single collector task
+@ MPI Task Assignment      : 0 admin1-VirtualBox
+@ MPI Task Assignment      : 1 admin1-VirtualBox
+@ MPI Task Assignment      : 2 admin1-VirtualBox
+@ MPI Task Assignment      : 3 admin1-VirtualBox
+
+---------------------------------------------------------------------------
+@--- MPI Time (seconds) ---------------------------------------------------
+---------------------------------------------------------------------------
+Task    AppTime    MPITime     MPI%
+   0       36.9       1.74     4.71
+   1       36.9       2.35     6.36
+   2       36.9       3.05     8.28
+   3       36.9       2.17     5.89
+   *        148       9.31     6.31
+---------------------------------------------------------------------------
+@--- Callsites: 24 --------------------------------------------------------
+---------------------------------------------------------------------------
+ ID Lev File/Address        Line Parent_Funct             MPI_Call
+  1   0 0x7fc336c2e4dd           [unknown]                Type_commit
+  2   0 0x7fc336c2e4dd           [unknown]                Type_commit
+  3   0 0x7fc336c1ef8a           [unknown]                Allgather
+  4   0 0x7fc336c2c8ba           [unknown]                Scatter
+  5   0 0x7fc336c1fd12           [unknown]                Bcast
+  6   0 0x7fc336c1fd12           [unknown]                Bcast
+  7   0 0x7f673838d4dd           [unknown]                Type_commit
+  8   0 0x7f673838d4dd           [unknown]                Type_commit
+  9   0 0x7f673837df8a           [unknown]                Allgather
+ 10   0 0x7f673838b8ba           [unknown]                Scatter
+ 11   0 0x7f673837ed12           [unknown]                Bcast
+ 12   0 0x7f673837ed12           [unknown]                Bcast
+ 13   0 0x7fc57e19d4dd           [unknown]                Type_commit
+ 14   0 0x7fc57e19d4dd           [unknown]                Type_commit
+ 15   0 0x7fc57e19b8ba           [unknown]                Scatter
+ 16   0 0x7fc57e18df8a           [unknown]                Allgather
+ 17   0 0x7fc57e18ed12           [unknown]                Bcast
+ 18   0 0x7fc57e18ed12           [unknown]                Bcast
+ 19   0 0x7fac5ee4d4dd           [unknown]                Type_commit
+ 20   0 0x7fac5ee4d4dd           [unknown]                Type_commit
+ 21   0 0x7fac5ee4b8ba           [unknown]                Scatter
+ 22   0 0x7fac5ee3df8a           [unknown]                Allgather
+ 23   0 0x7fac5ee3ed12           [unknown]                Bcast
+ 24   0 0x7fac5ee3ed12           [unknown]                Bcast
+---------------------------------------------------------------------------
+@--- Aggregate Time (top twenty, descending, milliseconds) ----------------
+---------------------------------------------------------------------------
+Call                 Site       Time    App%    MPI%      Count    COV
+Allgather              16   3.04e+03    2.06   32.60        500   0.00
+Allgather               9   2.33e+03    1.58   25.03        500   0.00
+Allgather              22   2.16e+03    1.46   23.17        500   0.00
+Allgather               3   1.73e+03    1.18   18.63        500   0.00
+Bcast                  24       14.1    0.01    0.15          1   0.00
+Bcast                  12       13.9    0.01    0.15          1   0.00
+Bcast                  18       13.8    0.01    0.15          1   0.00
+Bcast                  11        1.9    0.00    0.02          1   0.00
+Bcast                  17        1.9    0.00    0.02          1   0.00
+Bcast                  23       1.79    0.00    0.02          1   0.00
+Bcast                   5       1.79    0.00    0.02          1   0.00
+Bcast                   6        1.2    0.00    0.01          1   0.00
+Scatter                21      0.302    0.00    0.00          1   0.00
+Scatter                 4      0.302    0.00    0.00          1   0.00
+Scatter                15       0.16    0.00    0.00          1   0.00
+Type_commit            19      0.144    0.00    0.00          1   0.00
+Type_commit            13      0.142    0.00    0.00          1   0.00
+Type_commit             1      0.127    0.00    0.00          1   0.00
+Type_commit             7      0.116    0.00    0.00          1   0.00
+Scatter                10      0.105    0.00    0.00          1   0.00
+---------------------------------------------------------------------------
+@--- Aggregate Sent Message Size (top twenty, descending, bytes) ----------
+---------------------------------------------------------------------------
+Call                 Site      Count      Total       Avrg  Sent%
+Allgather               3        500      9e+07    1.8e+05  24.69
+Allgather               9        500      9e+07    1.8e+05  24.69
+Allgather              22        500      9e+07    1.8e+05  24.69
+Allgather              16        500      9e+07    1.8e+05  24.69
+Bcast                  23          1    7.2e+05    7.2e+05   0.20
+Bcast                  17          1    7.2e+05    7.2e+05   0.20
+Bcast                  11          1    7.2e+05    7.2e+05   0.20
+Bcast                   5          1    7.2e+05    7.2e+05   0.20
+Bcast                  24          1    2.4e+05    2.4e+05   0.07
+Bcast                  18          1    2.4e+05    2.4e+05   0.07
+Bcast                  12          1    2.4e+05    2.4e+05   0.07
+Bcast                   6          1    2.4e+05    2.4e+05   0.07
+Scatter                21          1    1.8e+05    1.8e+05   0.05
+Scatter                 4          1    1.8e+05    1.8e+05   0.05
+Scatter                15          1    1.8e+05    1.8e+05   0.05
+Scatter                10          1    1.8e+05    1.8e+05   0.05
+---------------------------------------------------------------------------
+@--- Callsite Time statistics (all, milliseconds): 24 ---------------------
+---------------------------------------------------------------------------
+Name              Site Rank  Count      Max     Mean      Min   App%   MPI%
+Allgather            3    0    500     17.4     3.47    0.143   4.70  99.80
+Allgather            3    *    500     17.4     3.47    0.143   1.18  18.63
+
+Allgather            9    1    500     24.6     4.66    0.136   6.32  99.32
+Allgather            9    *    500     24.6     4.66    0.136   1.58  25.03
+
+Allgather           16    2    500     25.1     6.07    0.137   8.23  99.48
+Allgather           16    *    500     25.1     6.07    0.137   2.06  32.60
+
+Allgather           22    3    500     18.9     4.31    0.139   5.85  99.25
+Allgather           22    *    500     18.9     4.31    0.139   1.46  23.17
+
+Bcast                5    0      1     1.79     1.79     1.79   0.00   0.10
+Bcast                5    *      1     1.79     1.79     1.79   0.00   0.02
+
+Bcast                6    0      1      1.2      1.2      1.2   0.00   0.07
+Bcast                6    *      1      1.2      1.2      1.2   0.00   0.01
+
+Bcast               11    1      1      1.9      1.9      1.9   0.01   0.08
+Bcast               11    *      1      1.9      1.9      1.9   0.00   0.02
+
+Bcast               12    1      1     13.9     13.9     13.9   0.04   0.59
+Bcast               12    *      1     13.9     13.9     13.9   0.01   0.15
+
+Bcast               17    2      1      1.9      1.9      1.9   0.01   0.06
+Bcast               17    *      1      1.9      1.9      1.9   0.00   0.02
+
+Bcast               18    2      1     13.8     13.8     13.8   0.04   0.45
+Bcast               18    *      1     13.8     13.8     13.8   0.01   0.15
+
+Bcast               23    3      1     1.79     1.79     1.79   0.00   0.08
+Bcast               23    *      1     1.79     1.79     1.79   0.00   0.02
+
+Bcast               24    3      1     14.1     14.1     14.1   0.04   0.65
+Bcast               24    *      1     14.1     14.1     14.1   0.01   0.15
+
+Scatter              4    0      1    0.302    0.302    0.302   0.00   0.02
+Scatter              4    *      1    0.302    0.302    0.302   0.00   0.00
+
+Scatter             10    1      1    0.105    0.105    0.105   0.00   0.00
+Scatter             10    *      1    0.105    0.105    0.105   0.00   0.00
+
+Scatter             15    2      1     0.16     0.16     0.16   0.00   0.01
+Scatter             15    *      1     0.16     0.16     0.16   0.00   0.00
+
+Scatter             21    3      1    0.302    0.302    0.302   0.00   0.01
+Scatter             21    *      1    0.302    0.302    0.302   0.00   0.00
+
+Type_commit          1    0      1    0.127    0.127    0.127   0.00   0.01
+Type_commit          1    *      1    0.127    0.127    0.127   0.00   0.00
+
+Type_commit          2    0      1  0.00909  0.00909  0.00909   0.00   0.00
+Type_commit          2    *      1  0.00909  0.00909  0.00909   0.00   0.00
+
+Type_commit          7    1      1    0.116    0.116    0.116   0.00   0.00
+Type_commit          7    *      1    0.116    0.116    0.116   0.00   0.00
+
+Type_commit          8    1      1  0.00721  0.00721  0.00721   0.00   0.00
+Type_commit          8    *      1  0.00721  0.00721  0.00721   0.00   0.00
+
+Type_commit         13    2      1    0.142    0.142    0.142   0.00   0.00
+Type_commit         13    *      1    0.142    0.142    0.142   0.00   0.00
+
+Type_commit         14    2      1   0.0102   0.0102   0.0102   0.00   0.00
+Type_commit         14    *      1   0.0102   0.0102   0.0102   0.00   0.00
+
+Type_commit         19    3      1    0.144    0.144    0.144   0.00   0.01
+Type_commit         19    *      1    0.144    0.144    0.144   0.00   0.00
+
+Type_commit         20    3      1  0.00971  0.00971  0.00971   0.00   0.00
+Type_commit         20    *      1  0.00971  0.00971  0.00971   0.00   0.00
+---------------------------------------------------------------------------
+@--- Callsite Message Sent statistics (all, sent bytes) -------------------
+---------------------------------------------------------------------------
+Name              Site Rank   Count       Max      Mean       Min       Sum
+Allgather            3    0     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+Allgather            3    *     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+
+Allgather            9    1     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+Allgather            9    *     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+
+Allgather           16    2     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+Allgather           16    *     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+
+Allgather           22    3     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+Allgather           22    *     500   1.8e+05   1.8e+05   1.8e+05     9e+07
+
+Bcast                5    0       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+Bcast                5    *       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+
+Bcast                6    0       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+Bcast                6    *       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+
+Bcast               11    1       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+Bcast               11    *       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+
+Bcast               12    1       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+Bcast               12    *       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+
+Bcast               17    2       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+Bcast               17    *       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+
+Bcast               18    2       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+Bcast               18    *       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+
+Bcast               23    3       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+Bcast               23    *       1   7.2e+05   7.2e+05   7.2e+05   7.2e+05
+
+Bcast               24    3       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+Bcast               24    *       1   2.4e+05   2.4e+05   2.4e+05   2.4e+05
+
+Scatter              4    0       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+Scatter              4    *       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+
+Scatter             10    1       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+Scatter             10    *       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+
+Scatter             15    2       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+Scatter             15    *       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+
+Scatter             21    3       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+Scatter             21    *       1   1.8e+05   1.8e+05   1.8e+05   1.8e+05
+---------------------------------------------------------------------------
+@--- End of Report --------------------------------------------------------
+---------------------------------------------------------------------------
