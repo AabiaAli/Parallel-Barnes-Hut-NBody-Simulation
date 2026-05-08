@@ -1,17 +1,17 @@
 # Compiler and flags
 MPICC = mpicc
-CFLAGS = -O3 -lm
-DEBUG_FLAGS = -g -O0 -lm
-PROF_FLAGS = -pg -O3 -lm
+CFLAGS = -O3
+LDFLAGS = -lm
+DEBUG_FLAGS = -g -O0
+PROF_FLAGS = -pg -O3
 
 # Target executable
 TARGET = pnbody
 
 # Source files
 SRCS = pnbody.c
-OBJS = $(SRCS:.c=.o)
 
-# mpiP paths (adjust if needed)
+# mpiP paths
 MPIP_HOME ?= $(HOME)/mpip
 MPIP_LIB = $(MPIP_HOME)/lib/libmpiP.so
 
@@ -20,25 +20,25 @@ all: $(TARGET)
 
 # Regular build
 $(TARGET): $(SRCS)
-	$(MPICC) $(CFLAGS) -o $(TARGET) $(SRCS)
+	$(MPICC) $(CFLAGS) -o $(TARGET) $(SRCS) $(LDFLAGS)
 
 # Debug build (with symbols)
 debug:
-	$(MPICC) $(DEBUG_FLAGS) -o $(TARGET) $(SRCS)
+	$(MPICC) $(DEBUG_FLAGS) -o $(TARGET) $(SRCS) $(LDFLAGS)
 
 # Profiling build (for gprof)
 prof:
-	$(MPICC) $(PROF_FLAGS) -o $(TARGET) $(SRCS)
+	$(MPICC) $(PROF_FLAGS) -o $(TARGET) $(SRCS) $(LDFLAGS)
 
 # Clean build files
 clean:
-	rm -f $(TARGET) $(OBJS) gmon.out *.mpiP pdist.dat timing.txt
+	rm -f $(TARGET) gmon.out *.mpiP pdist.dat timing.txt
 
 # Run with default parameters
 run: $(TARGET)
 	mpirun -np 4 ./$(TARGET) 10000 1000
 
-# Run with custom parameters (usage: make run N=20000 T=500 P=4)
+# Run with custom parameters (usage: make run-custom N=20000 T=500 P=4)
 run-custom: $(TARGET)
 	mpirun -np $(P) ./$(TARGET) $(N) $(T)
 
@@ -50,7 +50,7 @@ mpip: $(TARGET)
 mpip-custom: $(TARGET)
 	LD_PRELOAD=$(MPIP_LIB) mpirun -np $(P) ./$(TARGET) $(N) $(T)
 
-# Run scaling test (P=1,2,4)
+# Run scaling test (P=1,2,4) with N=10000
 scaling: $(TARGET)
 	@echo "=== Scaling Test with N=10000, T=500 ==="
 	@for p in 1 2 4; do \
@@ -75,10 +75,8 @@ help:
 	@echo "  make          - Build regular version"
 	@echo "  make debug    - Build with debug symbols"
 	@echo "  make prof     - Build with gprof profiling"
-	@echo "  make run      - Run with default settings (N=10000, T=1000, P=4)"
-	@echo "  make run-custom N=20000 T=500 P=4 - Run with custom settings"
+	@echo "  make run      - Run with default settings"
 	@echo "  make mpip     - Run with mpiP profiling"
 	@echo "  make scaling  - Run scaling test (P=1,2,4)"
 	@echo "  make large    - Run large test (N=50000)"
-	@echo "  make large-mpip - Profile large test with mpiP"
-	@echo "  make clean    - Remove build files and outputs"
+	@echo "  make clean    - Remove build files"

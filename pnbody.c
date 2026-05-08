@@ -11,6 +11,7 @@
 #include <math.h>
 #include <time.h> 
 #include <mpi.h> 
+#include "timing.h"
 
 #define DEFAULT_N 10000   // Number of particles
 #define DEFAULT_TIME 1000 // Number if iterations
@@ -731,7 +732,7 @@ void run_simulation(){
       printf("\nRunning simulation for %d bodies with %d iterations, and DELTAT = %f..\n\n", 
               N, TIME, DELTAT);
    
-
+	TOTAL_TIME_START();
    // Broadcast mass and position to all members in the group
    MPI_Bcast(mass, N, MPI_DOUBLE, 0, MPI_COMM_WORLD);
    MPI_Bcast(position, N, MPI_POSITION, 0, MPI_COMM_WORLD);
@@ -743,7 +744,10 @@ void run_simulation(){
    for (i = 0; i < TIME; i++) {
       BH_generate_octtree();
       BH_compute_cell_properties(root_cell);
-      BH_compute_force();
+      FORCE_TIME_START();
+	  BH_compute_force();
+	  FORCE_TIME_END(rank);
+
       BH_delete_octtree(root_cell);
 
       // Uncomment to compute force using particle-particle
@@ -758,6 +762,9 @@ void run_simulation(){
 
    if (rank == 0)
       write_positions();
+
+   FORCE_TIME_PRINT(rank);   // prints per-rank accumulated force time
+   TOTAL_TIME_END(rank);     // prints total wall time (rank 0 only)
 
 }
 
